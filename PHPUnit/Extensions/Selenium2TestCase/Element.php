@@ -78,10 +78,21 @@ class PHPUnit_Extensions_Selenium2TestCase_Element
             PHPUnit_Extensions_Selenium2TestCase_URL $parentFolder,
             PHPUnit_Extensions_Selenium2TestCase_Driver $driver)
     {
+        $key = false;
         if (!isset($value['ELEMENT'])) {
-            throw new InvalidArgumentException('Element not found.');
+            foreach ($value as $lKey => $val) {
+                if (substr($lKey,0,7) === "element") {
+                    $key = $lKey;
+                    break;
+                }
+            }
+            if (! $key) {
+                throw new InvalidArgumentException('Element not found.');
+            }
+        } else {
+            $key = "ELEMENT";
         }
-        $url = $parentFolder->descend($value['ELEMENT']);
+        $url = $parentFolder->descend($value[$key]);
         return new self($driver, $url);
     }
 
