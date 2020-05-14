@@ -61,7 +61,7 @@ class Window extends Command
 {
     public function __construct($name, $commandUrl)
     {
-        $jsonParameters = array('name' => $name);
+        $jsonParameters = array('handle' => $name);
         parent::__construct($jsonParameters, $commandUrl);
     }
 
