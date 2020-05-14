@@ -88,7 +88,7 @@ class MoveTo extends Command
         if (isset($jsonParameters['xoffset']) || isset($jsonParameters['yoffset'])) {
             // @see https://github.com/sebastianbergmann/phpunit-selenium/pull/250#issuecomment-21308153
             // @see https://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/moveto
-            error_log('Even though this method is a part of the WebDriver Wire protocol it might be not supported by your browser yet');
+            // error_log('Even though this method is a part of the WebDriver Wire protocol it might be not supported by your browser yet');
         }
 
         parent::__construct($jsonParameters, $url);
