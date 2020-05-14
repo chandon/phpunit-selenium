@@ -86,7 +86,11 @@ class Response
     public function getURL()
     {
         $url = $this->info['url'];
-        $sessionId = $this->jsonResponse['sessionId'];
+        if (in_array('sessionId',$this->jsonResponse)) {
+            $sessionId = $this->jsonResponse['sessionId'];
+        } else {
+            $sessionId = $this->getValue()['sessionId'];
+        }
 
         // if url doesn't have sessionId included - append it manually
         // this change was performed in selenium v2.34
